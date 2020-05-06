@@ -33,3 +33,5 @@ function moveStripRight(){
 
 left.addEventListener('click',moveStripleft)
 right.addEventListener('click',moveStripRight)
+
+setInterval(() => {moveStripleft()},1500)

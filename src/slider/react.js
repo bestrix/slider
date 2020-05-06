@@ -17,6 +17,7 @@ import img14 from "../img/14.png"
 import img15 from "../img/15.png"
 function App(){
     return(
+        <React.Fragment>
     <div className="slider">
         <div className="strip">
             <img src={img}/>
@@ -35,7 +36,10 @@ function App(){
             <img src={img14}/>
             <img src={img15}/>
         </div>
-    </div>)
+        </div>
+        <button className="button button-left">left</button>
+        <button className="button button-right">right</button>
+    </React.Fragment>)
 }
 render(<App/>, document.getElementById("App"));
 console.log('react')

@@ -1,4 +1,4 @@
-document.write('1')
+
 import "./slider/react.js"
 import  "./style.sass"
 //  import style from "./style.css"

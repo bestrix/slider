@@ -1,8 +1,9 @@
 document.write('1')
 import "./slider/react.js"
-import style from "./script.sass"
+import  "./style.sass"
 //  import style from "./style.css"
-console.log("style" + style )
 
-a = b;
 
+//Задачи пиксельных опций через js
+//Работа от стрелок < >
+    // Работа от стрелок вверх вниз

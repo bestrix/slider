@@ -36,9 +36,10 @@ function App(){
             <img src={img14}/>
             <img src={img15}/>
         </div>
+        <button className="super ">идидидиди</button>
         </div>
-        <button className="button button-left">left</button>
-        <button className="button button-right">right</button>
+        <button className="button button-left test">left</button>
+        <button className="button button-right test2">right</button>
     </React.Fragment>)
 }
 render(<App/>, document.getElementById("App"));

@@ -1,6 +1,8 @@
 
 import "./slider/react.js"
+
 import  "./style.sass"
+import './positionButton'
 //  import style from "./style.css"
 
 
@@ -20,7 +22,7 @@ function moveStripleft(){
     if(stepLeft > 12){
         stepZero()
     }
-    console.log(stepLeft)
+    
     strip.style.left = -stepLeft*256 + 'px' 
 }
 
@@ -35,3 +37,4 @@ left.addEventListener('click',moveStripleft)
 right.addEventListener('click',moveStripRight)
 
 setInterval(() => {moveStripleft()},1500)
+

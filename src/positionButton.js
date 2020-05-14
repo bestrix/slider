@@ -6,7 +6,9 @@ let slider = document.querySelector('.slider');
 let sliderXY = slider.getBoundingClientRect()
 
 
-document.write("posButton");
+
+
+
 
 let obj = {
     a:"b",
@@ -15,7 +17,7 @@ let obj = {
 
 
 // console.log('$c%s',style1,  obj)
-console.log("%c%s",style1, test2)
+// console.log("%c%s",style1, test2)
 
 // test.style.bottom = 0 + 'px'
 // top: 337px - 23px

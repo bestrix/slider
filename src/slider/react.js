@@ -20,7 +20,7 @@ function App(){
         <React.Fragment>
     <div className="slider">
         <div className="strip">
-            <img src={img}/>
+            <img id="item1" src={img}/>
             <img src={img2}/>
             <img src={img3}/>
             <img src={img4}/>
@@ -40,8 +40,14 @@ function App(){
         </div>
         <button className="button button-left test">left</button>
         <button className="button button-right test2">right</button>
+        <div className="indiacator">
+            <p id="ind1">lorem</p>
+            <p id="ind2">lorem</p>
+            <p id="ind3">lorem</p>
+            <p id="ind4">lorem</p>
+        </div>
     </React.Fragment>)
 }
 render(<App/>, document.getElementById("App"));
-console.log('react')
+
 

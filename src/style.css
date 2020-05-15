@@ -1,3 +1,15 @@
-body{
-    background-color: red;
+.slider{
+    width: 768px;
+    height: 256px;
+    margin: 50px auto;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.strip{
+    position: relative;
+    background-color: pin;
+    height: 256px;
+    width: 3840px;
+    left: 0;
+    transition: 1s;
 }

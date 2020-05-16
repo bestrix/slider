@@ -1,11 +1,21 @@
+let  test = document.querySelector('#count');
+
+
 function makeCounter() {
-    if(currentCount > 5){currentCount = 1}
-    var currentCount = 1;
     
+    let currentCount = 1;
+   
     return function() {
       return currentCount++;
+      if(currentCount >= 5){console.log('>5')}
     };
   }
-  
-  var counter = makeCounter(); // [[Scope]] -> {currentCount: 1}
-  
+
+  let counter = makeCounter(); 
+  console.log(counter());  console.log(counter());  console.log(counter());  console.log(counter());  console.log(counter());  console.log(counter());console.log(counter());
+  function testFunction(){
+      let i = counter();
+      console.log(i)
+  }
+
+  test.addEventListener('click',testFunction);

@@ -1,4 +1,8 @@
 
+let buttonAppend = document.querySelector('#buttonAppend')
+let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
+
+
 let strip = document.querySelector('.strip')
 
 //сканирование html 
@@ -8,27 +12,32 @@ for(let item of strip.children){
 }
 
 
-//remove
+//remove all
 function removeImg(node,elements){
     for(let i = 0; i < elements;i++){
         node.children[0].remove()
     }
 }
 removeImg(strip,strip.children.length);
-function name(){
-    return 'alla'
+
+
+
+//Добавление элементов 
+let massImg = [];
+let numberImg = 0 ;
+function appendImg(){
+    let i = counter();
+    massImg[i] = new Image();
+    massImg[i].src = massImgSrc[i];
+    strip.appendChild(massImg[i])
 }
 
-// создание изображений
-// for(let i = 0; i < strip.children.length; i++){
-//     let name = 'img' + i;
-//     let name  = document.createElement('img');
-//     name.src = massImgSrc[0];
-//     name.className = "lol"
-//     strip.appendChild(name)
-// }
-
-
-//генератор имени
-
-
+//Удаление первого элемента
+function removeFirstImg(){
+        strip.children[0].remove()
+    
+}
+//Добавление первого элемента и удаление 
+appendImg()
+buttonAppend.addEventListener('click',appendImg);
+buttonAppend.addEventListener('click',removeFirstImg);

@@ -1,11 +1,11 @@
 
 let buttonAppend = document.querySelector('#buttonAppend')
 let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
-
-
+let  plusButton = document.querySelector('#plusButton');
+let  minusButton = document.querySelector('#minusButton');
 let strip = document.querySelector('.strip')
 
-//сканирование html 
+//массив с адресами
 let massImgSrc = [];
 for(let item of strip.children){
     massImgSrc.push(item.src)
@@ -22,14 +22,14 @@ removeImg(strip,strip.children.length);
 
 
 
-//Добавление элементов 
+//Добавление первого элемента 
 let massImg = [];
 let numberImg = 0 ;
 function appendImg(){
     let i = counter();
-    massImg[i] = new Image();
-    massImg[i].src = massImgSrc[i];
-    strip.appendChild(massImg[i])
+    massImg[0] = new Image();
+    massImg[0].src = massImgSrc[0];
+    strip.appendChild(massImg[0])
 }
 
 //Удаление первого элемента
@@ -37,7 +37,50 @@ function removeFirstImg(){
         strip.children[0].remove()
     
 }
-//Добавление первого элемента и удаление 
+
+//Удаление последнего элемента ! Доделать
+function removeLastImg(){
+    strip.children[1].remove()
+
+}
+
+
+//Добавление первого элемента 
 appendImg()
-buttonAppend.addEventListener('click',appendImg);
-buttonAppend.addEventListener('click',removeFirstImg);
+
+
+
+//Slide counter
+let slideCounter = 0;
+
+//add slide +
+function plusCounter(){
+    removeFirstImg();
+    slideCounter++;
+    massImg[slideCounter] = new Image();
+    massImg[slideCounter].src = massImgSrc[slideCounter];
+    strip.append(massImg[slideCounter]);
+    if(slideCounter >= massImgSrc.length - 1){
+        slideCounter = 0;
+      }
+    console.log("+:" +slideCounter);
+  }
+  
+
+//add slide -
+function minusCounter(){
+    slideCounter--;
+    if(slideCounter <= 0){
+        slideCounter = massImgSrc.length - 1;
+      }
+      massImg[slideCounter] = new Image();
+      massImg[slideCounter].src = massImgSrc[slideCounter];
+      strip.prepend(massImg[slideCounter]);
+      removeLastImg();
+      
+}
+//Привязка к кнопкам
+plusButton.addEventListener('click',plusCounter);
+minusButton.addEventListener('click',minusCounter);
+console.log(slideCounter)
+      

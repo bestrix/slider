@@ -3,7 +3,10 @@ let buttonAppend = document.querySelector('#buttonAppend')
 let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
 let  plusButton = document.querySelector('#plusButton');
 let  minusButton = document.querySelector('#minusButton');
+let  moveTest = document.querySelector('#moveTest');
 let strip = document.querySelector('.strip')
+
+
 
 //массив с адресами
 let massImgSrc = [];
@@ -79,6 +82,23 @@ function minusCounter(){
       removeLastImg();
       
 }
+//Фця движения
+
+console.dir(strip.style)
+function moveSlide(){
+    let  margin = 0;
+    let moveInterval = setInterval(function(){
+        strip.style.marginLeft = margin + 'px';
+        margin = margin + 10;
+        if(margin >= 200){clearInterval(moveInterval)}
+        console.log(margin)
+    },100);
+        
+}
+
+
+
+moveTest.addEventListener('click',moveSlide)
 //Привязка к кнопкам
 plusButton.addEventListener('click',plusCounter);
 minusButton.addEventListener('click',minusCounter);

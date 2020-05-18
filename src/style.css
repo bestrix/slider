@@ -2,7 +2,7 @@
     /* width: 768px; на 3 элемента */
     width: 256px;
     height: 256px;
-    margin: 50px auto;
+    /* margin: 50px auto; */
     border: 1px solid black;
     overflow: hidden;
 }
@@ -12,5 +12,5 @@
     height: 256px;
     width: 3840px; 
     left: 0;
-    transition: 1s;
+    
 }

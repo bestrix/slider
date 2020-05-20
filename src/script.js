@@ -15,60 +15,60 @@ for(let item of strip.children){
 }
 
 
+// ---------------remove 
 //remove all
 function removeImg(node,elements){
-    for(let i = 0; i < elements;i++){
-        node.children[0].remove()
-    }
-}
-removeImg(strip,strip.children.length);
 
-
-
-//Добавление первого элемента 
-let massImg = [];
-let numberImg = 0 ;
-function appendImg(){
-    let i = counter();
-    massImg[0] = new Image();
-    massImg[0].src = massImgSrc[0];
-    strip.appendChild(massImg[0])
 }
 
 //Удаление первого элемента
 function removeFirstImg(){
-        strip.children[0].remove()
-    
-}
+    strip.lastChild.remove()
 
+}
 //Удаление последнего элемента ! Доделать
 function removeLastImg(){
-    strip.children[1].remove()
-
+    strip.lastElementChild.remove()
 }
 
+function megaRemove(param){
+    switch (param){
+        case "all" :
+            alert("all")
+            break;
+        case "first" :
+            alert("first")
+            break;
+        case "last" :
+            alert("last")
+            break;
+    }
+}
+megaRemove("all")
 
-//Добавление первого элемента 
+removeImg(strip,strip.children.length);
+
+
+//----------------------Add
+let massImg = [];
+let numberImg = 0 ;
+//add one
+function appendImg(){
+    let i = counter();
+    massImg[0] = new Image();
+    massImg[0].src = massImgSrc[0];
+    massImg[1] = new Image();
+    massImg[1].src = massImgSrc[1];
+    massImg[2] = new Image();
+    massImg[2].src = massImgSrc[2];
+    strip.appendChild(massImg[0])
+    strip.appendChild(massImg[1])
+    strip.appendChild(massImg[2])
+}
 appendImg()
-
-
 
 //Slide counter
 let slideCounter = 0;
-
-//add slide +
-function plusCounter(){
-    removeFirstImg();
-    slideCounter++;
-    massImg[slideCounter] = new Image();
-    massImg[slideCounter].src = massImgSrc[slideCounter];
-    strip.append(massImg[slideCounter]);
-    if(slideCounter >= massImgSrc.length - 1){
-        slideCounter = 0;
-      }
-    console.log("+:" +slideCounter);
-  }
-  
 
 //add slide -
 function minusCounter(){
@@ -78,13 +78,25 @@ function minusCounter(){
       }
       massImg[slideCounter] = new Image();
       massImg[slideCounter].src = massImgSrc[slideCounter];
-      strip.prepend(massImg[slideCounter]);
+      strip.append(massImg[slideCounter]);
       removeLastImg();
       
 }
-//Фця движения
 
-console.dir(strip.style)
+//add slide +
+function plusCounter(){
+    slideCounter++;
+    console.log(slideCounter);
+    massImg[slideCounter] = new Image();
+    massImg[slideCounter].src = massImgSrc[slideCounter];
+    strip.prepend(massImg[slideCounter]);
+    strip.children[0].style.marginLeft = '-256px'
+    if(slideCounter >= massImgSrc.length - 1){
+        slideCounter = 0;
+      };
+  }
+
+//----move
 function moveSlide(){
     let  margin = 0;
     let moveInterval = setInterval(function(){
@@ -93,14 +105,30 @@ function moveSlide(){
         if(margin >= 200){clearInterval(moveInterval)}
         console.log(margin)
     },100);
-        
+};
+
+//------------move all
+function moveAllimg(){
+    for(let item of strip.children){
+        item.style.marginLeft = '0px'
+    }
 }
 
 
 
-moveTest.addEventListener('click',moveSlide)
+function all(){
+    plusCounter()
+    setTimeout(moveAllimg,100)
+    setTimeout(removeLastImg,1100)
+    
+
+}
+// setInterval(all,1000)
+
+
 //Привязка к кнопкам
 plusButton.addEventListener('click',plusCounter);
 minusButton.addEventListener('click',minusCounter);
-console.log(slideCounter)
+moveTest.addEventListener('click',all)
+
       

@@ -16,7 +16,7 @@ for(let item of strip.children){
 
 
 // ---------------remove 
-function megaRemove(param){
+function remove(param){
     switch (param){
         case "all" :
             for(let i = 0; i < 15; i++){
@@ -37,6 +37,40 @@ function megaRemove(param){
 //----------------------Add
 let massImg = [];
 let numberImg = 0 ;
+let slideCounter = 0;
+
+//Расщет slideConuter
+function calcSlideCounter(param){
+    switch (param){
+        case "+" :
+            slideCounter++;
+            break;
+        case "-" :
+            slideCounter--;
+            break;
+    }
+    if(slideCounter <= 0){
+        slideCounter = massImgSrc.length;
+    }else if(slideCounter > massImgSrc.length - 1){
+        slideCounter = 0;
+    }
+    return slideCounter
+  }
+
+  //Создание img
+
+  function createImg(numberSlide){
+    massImg[numberSlide] = new Image();
+    massImg[numberSlide].src = massImgSrc[numberSlide];
+    insertImg('+',massImg[numberSlide]);
+  }
+
+  function insertImg(sign,massImg){
+      if(sign == '+'){
+          console.log(sign,massImg)
+        strip.prepend(massImg);
+      }
+  }
 //add one
 function appendImg(){
     let i = counter();
@@ -52,36 +86,40 @@ function appendImg(){
 }
 appendImg()
 
-//Slide counter
-let slideCounter = 0;
+
+
+
+
+//add slide +
+function plusCounter(){
+    //Создание img и задача его свойств + Вставка img
+    createImg(calcSlideCounter('+'));
+    //Координаты первого img либо Удалене последнего
+    strip.children[0].style.marginLeft = '-256px'
+  }
+
+
 
 //add slide -
 function minusCounter(){
+    //итерация счетчика и обнуление по условию
     slideCounter--;
     if(slideCounter <= 0){
         slideCounter = massImgSrc.length - 1;
       }
+
       massImg[slideCounter] = new Image();
       massImg[slideCounter].src = massImgSrc[slideCounter];
+   
       strip.append(massImg[slideCounter]);
+     
       removeLastImg();
       
 }
 
-//add slide +
-function plusCounter(){
-    slideCounter++;
-    console.log(slideCounter);
-    massImg[slideCounter] = new Image();
-    massImg[slideCounter].src = massImgSrc[slideCounter];
-    strip.prepend(massImg[slideCounter]);
-    strip.children[0].style.marginLeft = '-256px'
-    if(slideCounter >= massImgSrc.length - 1){
-        slideCounter = 0;
-      };
-  }
 
-//----move
+
+//-----------move
 function moveSlide(){
     let  margin = 0;
     let moveInterval = setInterval(function(){
@@ -99,12 +137,12 @@ function moveAllimg(){
     }
 }
 
-
+remove('all')
 
 function all(){
     plusCounter()
     setTimeout(moveAllimg,100)
-    setTimeout(removeLastImg,1100)
+    setTimeout(remove('last'),1100)
     
 
 }

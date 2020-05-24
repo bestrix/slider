@@ -16,37 +16,22 @@ for(let item of strip.children){
 
 
 // ---------------remove 
-//remove all
-function removeImg(node,elements){
-
-}
-
-//Удаление первого элемента
-function removeFirstImg(){
-    strip.lastChild.remove()
-
-}
-//Удаление последнего элемента ! Доделать
-function removeLastImg(){
-    strip.lastElementChild.remove()
-}
-
 function megaRemove(param){
     switch (param){
         case "all" :
-            alert("all")
+            for(let i = 0; i < 15; i++){
+                strip.children[0].remove()
+            }
             break;
         case "first" :
-            alert("first")
+            strip.children[0].remove()
             break;
         case "last" :
-            alert("last")
+            strip.lastElementChild.remove()
             break;
     }
 }
-megaRemove("all")
 
-removeImg(strip,strip.children.length);
 
 
 //----------------------Add

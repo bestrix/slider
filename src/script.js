@@ -1,3 +1,5 @@
+//Пытался оптимизировать код на  -img но сделал все только хуже
+
 
 let buttonAppend = document.querySelector('#buttonAppend')
 let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
@@ -54,22 +56,40 @@ function calcSlideCounter(param){
     }else if(slideCounter > massImgSrc.length - 1){
         slideCounter = 0;
     }
-    return slideCounter
+    let p = param;
+    let s = slideCounter;
+    return {
+        param,
+        slideCounter
+    }
   }
+
+  console.log("cons:  "+calcSlideCounter('-').param)
 
   //Создание img
-
-  function createImg(numberSlide){
+  function createImg(numberSlide,signInsert){
     massImg[numberSlide] = new Image();
     massImg[numberSlide].src = massImgSrc[numberSlide];
-    insertImg('+',massImg[numberSlide]);
+    switch (signInsert){
+        case '+':
+            insertImg('+',massImg[numberSlide]);
+            break;
+        case '-':
+            insertImg('-',massImg[numberSlide]);
+            break;
+    }
   }
 
+  //Вставка
   function insertImg(sign,massImg){
-      if(sign == '+'){
-          console.log(sign,massImg)
-        strip.prepend(massImg);
-      }
+    switch (sign){
+        case '+':
+            strip.prepend(massImg);
+            break;
+        case '-':
+            strip.append(massImg);
+            break;
+    }
   }
 //add one
 function appendImg(){
@@ -87,14 +107,9 @@ function appendImg(){
 appendImg()
 
 
-
-
-
-//add slide +
+//add slide + доделать
 function plusCounter(){
-    //Создание img и задача его свойств + Вставка img
-    createImg(calcSlideCounter('+'));
-    //Координаты первого img либо Удалене последнего
+    createImg(calcSlideCounter('+').slideCounter,calcSlideCounter('+').param);
     strip.children[0].style.marginLeft = '-256px'
   }
 
@@ -102,19 +117,7 @@ function plusCounter(){
 
 //add slide -
 function minusCounter(){
-    //итерация счетчика и обнуление по условию
-    slideCounter--;
-    if(slideCounter <= 0){
-        slideCounter = massImgSrc.length - 1;
-      }
-
-      massImg[slideCounter] = new Image();
-      massImg[slideCounter].src = massImgSrc[slideCounter];
-   
-      strip.append(massImg[slideCounter]);
-     
-      removeLastImg();
-      
+    createImg(calcSlideCounter('-').slideCounter,calcSlideCounter('-').param);
 }
 
 
@@ -143,6 +146,14 @@ function all(){
     plusCounter()
     setTimeout(moveAllimg,100)
     setTimeout(remove('last'),1100)
+    
+
+}
+
+function allMinus(){
+    minusCounter()
+    setTimeout(moveAllimg,100)
+    setTimeout(megare('first'),1100)
     
 
 }

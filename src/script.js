@@ -26,6 +26,7 @@ function remove(param){
             }
             break;
         case "first" :
+            console.log("remove")
             strip.children[0].remove()
             break;
         case "last" :
@@ -117,6 +118,7 @@ function plusCounter(){
 
 //add slide -
 function minusCounter(){
+    console.log("minus")
     createImg(calcSlideCounter('-').slideCounter,calcSlideCounter('-').param);
 }
 
@@ -134,17 +136,23 @@ function moveSlide(){
 };
 
 //------------move all
-function moveAllimg(){
+function moveRight(){
     for(let item of strip.children){
         item.style.marginLeft = '0px'
     }
 }
 
+
+function moveLeft(){
+    console.log("move")
+    strip.children[0].style.marginLeft = '-256px'
+}
+
 remove('all')
 
-function all(){
+function allPlus(){
     plusCounter()
-    setTimeout(moveAllimg,100)
+    setTimeout(moveRight,100)
     setTimeout(remove('last'),1100)
     
 
@@ -152,17 +160,16 @@ function all(){
 
 function allMinus(){
     minusCounter()
-    setTimeout(moveAllimg,100)
-    setTimeout(megare('first'),1100)
-    
+    setTimeout(moveLeft,100)
+    setTimeout(function(){strip.children[0].remove()},1100)
 
 }
-// setInterval(all,1000)
+
 
 
 //Привязка к кнопкам
-plusButton.addEventListener('click',plusCounter);
-minusButton.addEventListener('click',minusCounter);
-moveTest.addEventListener('click',all)
+plusButton.addEventListener('click',allPlus);
+minusButton.addEventListener('click',allMinus);
+// moveTest.addEventListener('click',all)
 
       

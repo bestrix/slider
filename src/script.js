@@ -167,9 +167,25 @@ function allMinus(){
 
 
 
+function startSliderRight(a){
+    if(a = 'a'){
+        clearInterval(right)
+        let left = setInterval(allPlus,1500);
+    }else if(a = 'b'){
+        clearInterval(left)
+        let right = setInterval(allMinus,1500)
+    }
+}
+
+
+function startSliderLeft(){
+    clearInterval(left)
+    
+}
+
 //Привязка к кнопкам
-plusButton.addEventListener('click',allPlus);
-minusButton.addEventListener('click',allMinus);
+plusButton.addEventListener('click',startSliderRight);
+minusButton.addEventListener('click',startSliderLeft);
 // moveTest.addEventListener('click',all)
 
       

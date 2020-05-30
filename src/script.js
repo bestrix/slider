@@ -165,18 +165,22 @@ function allMinus(){
 
 }
 
+let plusOk = false;
+let minusOk = false;
 
-
-function startSliderRight(a){
-    if(a = 'a'){
-        clearInterval(right)
-        let left = setInterval(allPlus,1500);
-    }else if(a = 'b'){
-        clearInterval(left)
-        let right = setInterval(allMinus,1500)
+function startSlider(){
+    if(plusOk){
+        minusOk = false;
+        allPlus()
+        console.log('minusOk:'+ minusOk)
+    } if(minusOk){
+        plusOk = false;
+        allMinus()
+        console.log('plusOk:'+plusOk)
     }
 }
 
+let right = setInterval(startSlider,1500)
 
 function startSliderLeft(){
     clearInterval(left)
@@ -184,8 +188,8 @@ function startSliderLeft(){
 }
 
 //Привязка к кнопкам
-plusButton.addEventListener('click',startSliderRight);
-minusButton.addEventListener('click',startSliderLeft);
+plusButton.addEventListener('click',() => {plusOk = true;});
+minusButton.addEventListener('click',() => {plusOk = false;minusOk = true;});
 // moveTest.addEventListener('click',all)
 
       

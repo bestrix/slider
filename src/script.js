@@ -30,6 +30,7 @@ function remove(param){
             strip.children[0].remove()
             break;
         case "last" :
+            console.log('remove')
             strip.lastElementChild.remove()
             break;
     }
@@ -110,6 +111,7 @@ appendImg()
 
 //add slide + доделать
 function plusCounter(){
+    console.log('plusCaunter')
     createImg(calcSlideCounter('+').slideCounter,calcSlideCounter('+').param);
     strip.children[0].style.marginLeft = '-256px'
   }
@@ -137,6 +139,7 @@ function moveSlide(){
 
 //------------move all
 function moveRight(){
+    console.log('move')
     for(let item of strip.children){
         item.style.marginLeft = '0px'
     }
@@ -144,7 +147,6 @@ function moveRight(){
 
 
 function moveLeft(){
-    console.log("move")
     strip.children[0].style.marginLeft = '-256px'
 }
 
@@ -153,7 +155,10 @@ remove('all')
 function allPlus(){
     plusCounter()
     setTimeout(moveRight,100)
-    setTimeout(remove('last'),1100)
+    setTimeout(() => {
+        console.log("remove");
+        strip.lastElementChild.remove()
+    },1000);
     
 
 }
@@ -171,12 +176,12 @@ let minusOk = false;
 function startSlider(){
     if(plusOk){
         minusOk = false;
-        allPlus()
-        console.log('minusOk:'+ minusOk)
+        allPlus();
+
     } if(minusOk){
         plusOk = false;
-        allMinus()
-        console.log('plusOk:'+plusOk)
+        allMinus();
+
     }
 }
 

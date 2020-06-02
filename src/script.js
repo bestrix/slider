@@ -6,7 +6,7 @@ let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
 let  plusButton = document.querySelector('#plusButton');
 let  minusButton = document.querySelector('#minusButton');
 let  moveTest = document.querySelector('#moveTest');
-let strip = document.querySelector('.strip')
+
 
 
 
@@ -41,11 +41,11 @@ function remove(param){
 //----------------------Add
 let massImg = [];
 let numberImg = 0 ;
-let slideCounter = 0;
+let slideCounter = 5;
 
 //Расщет slideConuter
-function calcSlideCounter(param){
-    switch (param){
+    function calcSlideCounter(param){
+        switch (param){
         case "+" :
             slideCounter++;
             break;
@@ -53,37 +53,37 @@ function calcSlideCounter(param){
             slideCounter--;
             break;
     }
-    if(slideCounter <= 0){
-        slideCounter = massImgSrc.length;
+    if(slideCounter < 0){
+        slideCounter = massImgSrc.length - 1;
     }else if(slideCounter > massImgSrc.length - 1){
         slideCounter = 0;
     }
-    let p = param;
-    let s = slideCounter;
-    return {
-        param,
-        slideCounter
-    }
+
+    return slideCounter
   }
 
 
 
   //Создание img
-  function createImg(numberSlide,signInsert){
+  function createImgPlus(numberSlide,signInsert){
     massImg[numberSlide] = new Image();
     massImg[numberSlide].src = massImgSrc[numberSlide];
-    switch (signInsert){
-        case '+':
-            insertImg('+',massImg[numberSlide]);
-            break;
-        case '-':
-            insertImg('-',massImg[numberSlide]);
-            break;
-    }
+    insertImg('+',massImg[numberSlide]);
+
+    
+    
+  }
+
+  function createImgMinus(numberSlide){
+    console.log('createImgMinus-номер слайда:'+numberSlide)
+    massImg[numberSlide] = new Image();
+    massImg[numberSlide].src = massImgSrc[numberSlide];
+    insertImg('-',massImg[numberSlide]);
   }
 
   //Вставка
   function insertImg(sign,massImg){
+      
     switch (sign){
         case '+':
             strip.prepend(massImg);
@@ -111,17 +111,17 @@ sizeImg()
 
 //add slide + доделать
 function plusCounter(){
-    console.log('plusCaunter')
-    createImg(calcSlideCounter('+').slideCounter,calcSlideCounter('+').param);
+    createImgPlus(calcSlideCounter('+'));
     strip.children[0].style.marginLeft = '-256px'
+    console.log('plusCaunter+'+calcSlideCounter('+').slideCounter )
   }
 
 
 
 //add slide -
 function minusCounter(){
-    console.log("minus")
-    createImg(calcSlideCounter('-').slideCounter,calcSlideCounter('-').param);
+    console.log("minusCounter")
+    createImgMinus(calcSlideCounter('-'));
 }
 
 
@@ -153,7 +153,8 @@ function moveLeft(){
 remove('all')
 
 function allPlus(){
-    sizeImg()
+    sizeImg()   
+    windowsInfoRemove()
     plusCounter()
     setTimeout(moveRight,100)
     setTimeout(() => {
@@ -166,6 +167,7 @@ function allPlus(){
 
 function allMinus(){
     sizeImg()
+    windowsInfoRemove()
     minusCounter()
     setTimeout(moveLeft,100)
     setTimeout(function(){strip.children[0].remove()},1100)

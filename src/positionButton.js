@@ -1,7 +1,6 @@
 
 let test = document.querySelector('#plusButton')
 let test2 = document.querySelector('#minusButton')
-let slider = document.querySelector('.slider');
 let sliderXY = slider.getBoundingClientRect()
 
 

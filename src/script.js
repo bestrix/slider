@@ -66,7 +66,7 @@ function calcSlideCounter(param){
     }
   }
 
-  console.log("cons:  "+calcSlideCounter('-').param)
+
 
   //Создание img
   function createImg(numberSlide,signInsert){
@@ -107,7 +107,7 @@ function appendImg(){
     strip.appendChild(massImg[2])
 }
 appendImg()
-
+sizeImg()
 
 //add slide + доделать
 function plusCounter(){
@@ -153,6 +153,7 @@ function moveLeft(){
 remove('all')
 
 function allPlus(){
+    sizeImg()
     plusCounter()
     setTimeout(moveRight,100)
     setTimeout(() => {
@@ -164,10 +165,10 @@ function allPlus(){
 }
 
 function allMinus(){
+    sizeImg()
     minusCounter()
     setTimeout(moveLeft,100)
     setTimeout(function(){strip.children[0].remove()},1100)
-
 }
 
 let plusOk = false;
@@ -193,7 +194,7 @@ function startSliderLeft(){
 }
 
 //Привязка к кнопкам
-plusButton.addEventListener('click',() => {plusOk = true;});
+plusButton.addEventListener('click',() => {;plusOk = true;});
 minusButton.addEventListener('click',() => {plusOk = false;minusOk = true;});
 // moveTest.addEventListener('click',all)
 

@@ -9,6 +9,9 @@
     border-radius: 20px;
     border-image:  linear-gradient(45deg, rgb(101, 115, 255), rgb(111, 114, 247), rgb(120, 114, 239), rgb(130, 113, 231), rgb(139, 112, 223), rgb(149, 111, 215), rgb(158, 111, 208), rgb(168, 110, 200), rgb(177, 109, 192), rgb(187, 108, 184), rgb(196, 108, 176), rgb(206, 107, 168));
     border-image-slice: 1;
+    z-index: 999;
+    transition: 1s;
+
 }
 .strip{
     position: relative;
@@ -17,7 +20,8 @@
     width: 1024px;       
     left: 0;
     transition: 1s;
-    
+    z-index: 999;
+    background-color: #fff;
 }
 .strip img{
     transition: 1s;
@@ -28,10 +32,17 @@
 }
 
 .windiws_info{
+    top:64px;
     border:1px solid orchid;
     font-size: 24px;
     width: 256px;
     position: absolute;
     height: 256px;
     background: linear-gradient(45deg,#eeaeca,#94bbe9);
+
+}
+
+.animate-down{
+    /* margin-top: 272px; */
+    transition: margin-top 1s ease-out 0.5s;
 }

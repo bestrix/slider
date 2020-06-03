@@ -11,7 +11,7 @@ window.addEventListener('keydown',(e) => {
     //перезапсь значеницй
 })
 
-
+windowInfaCreate()
 function windowInfaCreate(){
     if(windowIsMake == false){
         let div = document.createElement('div');
@@ -20,8 +20,12 @@ function windowInfaCreate(){
         div.innerHTML = "<strong>Всем привет!</strong> Вы прочитали важное сообщение.";
         slider.append(div);
         console.log(slider.clientTop)
-        div.style.left = slider.clientWidth / 2 + div.clientWidth / 2 + 30  + 'px';
-        div.style.marginTop = slider.clientTop + 'px';
+        // div.style.marginTop = slider.clientTop + 'px';
+        // div.style.marginTop = -258 + 'px';
+        div.style.marginLeft = (slider.clientWidth / 2) - (div.offsetWidth / 2)  + 'px';
+        div.classList.add("animate-down");
+        let animate = document.getElementsByClassName('animate-down')
+        animate[0].style.marginTop = slider.clientHeight + slider.clientTop + 'px'
     }
     windowIsMake = true;
     plusOk = false;

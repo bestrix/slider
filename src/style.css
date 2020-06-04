@@ -46,3 +46,5 @@
     /* margin-top: 272px; */
     transition: margin-top 1s ease-out 0.5s;
 }
+
+console.log("name", name)

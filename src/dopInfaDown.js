@@ -1,6 +1,7 @@
 let strip = document.querySelector('.strip')
 let middle = strip.children[1];
 let windowIsMake = false;
+let  direction;
 
 console.log(slider)
 window.addEventListener('keydown',(e) => {
@@ -11,17 +12,17 @@ window.addEventListener('keydown',(e) => {
     //перезапсь значеницй
 })
 
-windowInfaCreate()
 function windowInfaCreate(){
     if(windowIsMake == false){
+        definitionElem()
         let div = document.createElement('div');
         div.className = "windiws_info";
         div.id = 'winInfo';
-        div.innerHTML = "<strong>Всем привет!</strong> Вы прочитали важное сообщение.";
+        //👉
+        let textOfData = returnData(definitionElem())
+        div.innerHTML = "<strong>Всем привет!</strong> Вы видете." + textOfData; ;
         slider.append(div);
         console.log(slider.clientTop)
-        // div.style.marginTop = slider.clientTop + 'px';
-        // div.style.marginTop = -258 + 'px';
         div.style.marginLeft = (slider.clientWidth / 2) - (div.offsetWidth / 2)  + 'px';
         div.classList.add("animate-down");
         let animate = document.getElementsByClassName('animate-down')
@@ -39,3 +40,23 @@ function windowsInfoRemove(){
         winInfo.remove();
     }
 }
+
+
+//Задать дата инфу хтмл
+
+function returnData(element){
+    return element.dataset.info
+}
+
+function definitionElem(){
+    if(direction == 'left'){
+        console.log("definitionElem -> left")
+        return strip.children[2]
+    }else if((direction == 'right')){
+        console.log("definitionElem -> right")
+        return strip.children[1]
+    }
+}
+
+
+

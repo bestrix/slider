@@ -11,3 +11,7 @@ function sizeImg(){
     
 }
 
+function sizeImgStrip(){
+    strip.style.offsetWidth
+    console.log("offsetWidth",strip.offsetWidth)
+}

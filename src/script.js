@@ -1,4 +1,5 @@
 //Пытался оптимизировать код на  -img но сделал все только хуже
+//✅ ✔ ⛔ ➔ ✱ ▪👉👈🤜✍👇👆👹💩✴➕➖❗❓‼⁉
 
 
 let buttonAppend = document.querySelector('#buttonAppend')
@@ -6,14 +7,17 @@ let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
 let  plusButton = document.querySelector('#plusButton');
 let  minusButton = document.querySelector('#minusButton');
 let  moveTest = document.querySelector('#moveTest');
-
+let numSlide = 2;
 
 
 
 //массив с адресами
 let massImgSrc = [];
+let massImgDataInfo = [];
 for(let item of strip.children){
     massImgSrc.push(item.src)
+    massImgDataInfo.push(item.dataset.info)
+    console.dir
 }
 
 
@@ -40,8 +44,9 @@ function remove(param){
 
 //----------------------Add
 let massImg = [];
+
 let numberImg = 0 ;
-let slideCounter = 5;
+let slideCounter = 0;
 
 //Расщет slideConuter
     function calcSlideCounter(param){
@@ -68,6 +73,7 @@ let slideCounter = 5;
   function createImgPlus(numberSlide,signInsert){
     massImg[numberSlide] = new Image();
     massImg[numberSlide].src = massImgSrc[numberSlide];
+    massImg[numberSlide].setAttribute("data-info",'' + massImgDataInfo[numberSlide])
     insertImg('+',massImg[numberSlide]);
 
     
@@ -75,15 +81,16 @@ let slideCounter = 5;
   }
 
   function createImgMinus(numberSlide){
-    console.log('createImgMinus-номер слайда:'+numberSlide)
+    console.log('createImgMinus-номер слайда:'+ numberSlide)
     massImg[numberSlide] = new Image();
+    //todo заносить правильное data-info
+    massImg[numberSlide].setAttribute("data-info",'' + massImgDataInfo[numberSlide])
     massImg[numberSlide].src = massImgSrc[numberSlide];
     insertImg('-',massImg[numberSlide]);
   }
 
   //Вставка
   function insertImg(sign,massImg){
-      
     switch (sign){
         case '+':
             strip.prepend(massImg);
@@ -93,20 +100,20 @@ let slideCounter = 5;
             break;
     }
   }
-//add one
-function appendImg(){
-    let i = counter();
-    massImg[0] = new Image();
-    massImg[0].src = massImgSrc[0];
-    massImg[1] = new Image();
-    massImg[1].src = massImgSrc[1];
-    massImg[2] = new Image();
-    massImg[2].src = massImgSrc[2];
-    strip.appendChild(massImg[0])
-    strip.appendChild(massImg[1])
-    strip.appendChild(massImg[2])
+
+  //Вставка начальных IMG
+function appendImg(number){
+    for(i = 0; i <= number; i++ ){
+        let numSlide = calcSlideCounter('+');
+        massImg[numSlide] =  new Image();
+        massImg[numSlide].setAttribute("data-info",'' + massImgDataInfo[numSlide])
+        massImg[numSlide].src = massImgSrc[numSlide];
+        
+        strip.appendChild(massImg[numSlide])
+    }
 }
-appendImg()
+
+appendImg(numSlide)
 sizeImg()
 
 //add slide + доделать

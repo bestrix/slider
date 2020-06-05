@@ -1,4 +1,5 @@
 .slider{
+    
     width: 256px;
     width: 758px; 
     height: 256px;
@@ -7,11 +8,11 @@
     overflow: hidden;
     border : 15px solid skyblue;
     border-radius: 20px;
-    border-image:  linear-gradient(45deg, rgb(101, 115, 255), rgb(111, 114, 247), rgb(120, 114, 239), rgb(130, 113, 231), rgb(139, 112, 223), rgb(149, 111, 215), rgb(158, 111, 208), rgb(168, 110, 200), rgb(177, 109, 192), rgb(187, 108, 184), rgb(196, 108, 176), rgb(206, 107, 168));
+    border-image:  linear-gradient(45deg, rgb(101, 115, 255), rgb(111, 114, 247), rgb(120, 114, 239), rgb(130, 113, 231), rgb(139, 112, 223), rgb(149, 111, 215), rgb(158, 111, 208), rgb(168, 110, 200), rgb(177, 109, 192), rgb(187, 108, 184), rgb(196, 108, 176), rgb(206, 107, 168)); 
     border-image-slice: 1;
     z-index: 999;
-    transition: 1s;
-
+    /* transition: 1s; */
+    
 }
 .strip{
     position: relative;
@@ -47,4 +48,3 @@
     transition: margin-top 1s ease-out 0.5s;
 }
 
-console.log("name", name)

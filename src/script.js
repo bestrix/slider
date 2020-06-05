@@ -1,7 +1,6 @@
 //Пытался оптимизировать код на  -img но сделал все только хуже
 //✅ ✔ ⛔ ➔ ✱ ▪👉👈🤜✍👇👆👹💩✴➕➖❗❓‼⁉
 
-
 let buttonAppend = document.querySelector('#buttonAppend')
 let  buttonRemoveImg = document.querySelector('#buttonRemoveImg')
 let  plusButton = document.querySelector('#plusButton');
@@ -160,6 +159,7 @@ function moveLeft(){
 remove('all')
 
 function allPlus(){
+    changeColorBorder()
     sizeImg()   
     windowsInfoRemove()
     plusCounter()
@@ -173,6 +173,7 @@ function allPlus(){
 }
 
 function allMinus(){
+    changeColorBorder()
     sizeImg()
     windowsInfoRemove()
     minusCounter()

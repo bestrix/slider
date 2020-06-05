@@ -1,7 +1,7 @@
 let strip = document.querySelector('.strip')
 let middle = strip.children[1];
 let windowIsMake = false;
-let  direction;
+let  direction = 'right';
 
 console.log(slider)
 window.addEventListener('keydown',(e) => {
@@ -51,7 +51,7 @@ function returnData(element){
 function definitionElem(){
     if(direction == 'left'){
         console.log("definitionElem -> left")
-        return strip.children[2]
+        return strip.children[2 ]
     }else if((direction == 'right')){
         console.log("definitionElem -> right")
         return strip.children[1]

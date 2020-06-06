@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { render } from "react-dom";
-import test from './index';
+import test from './script';
+import './style.sass'
+import './style.css'
 test()
 
 

@@ -1,3 +1,4 @@
-import test from './script.js'
-document.write('webpack is working')
-test()
+let any = 'index.js'
+export default function test(){
+    document.write(any)
+}

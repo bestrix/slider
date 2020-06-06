@@ -3,19 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: './src/react.jsx',
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist2'),
     },
     module: {
         rules: [
-          { test: /\.js$/,
-            exclude: /node_modules/, 
-            loader: "babel-loader" 
-          },
           {
-            test: /\.m?js$/,
+            test: /\.jsx/,
             exclude: /(node_modules|bower_components)/,
             use: {
               loader: 'babel-loader',
@@ -24,6 +20,16 @@ module.exports = {
               }
             }
           },
+          {
+            test: /\.js/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env','@babel/preset-react']
+              }
+            }
+          }
         ]
       },
       

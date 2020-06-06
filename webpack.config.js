@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 
 module.exports = {
@@ -12,6 +13,8 @@ module.exports = {
         rules: [
           {
             test: /\.jsx/,
+            enforce: 'pre',
+            use: ['source-map-loader'],
             exclude: /(node_modules|bower_components)/,
             use: {
               loader: 'babel-loader',
@@ -22,6 +25,8 @@ module.exports = {
           },
           {
             test: /\.js/,
+            enforce: 'pre',
+            use: ['source-map-loader'],
             exclude: /(node_modules|bower_components)/,
             use: {
               loader: 'babel-loader',
@@ -37,7 +42,13 @@ module.exports = {
           {
             test: /\.css/i,
             use: ['style-loader', 'css-loader','sass-loader'],
-          }
+          },
+          {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader',
+                  ],
+          },
         ]
       },
       
@@ -46,7 +57,10 @@ module.exports = {
         compress: true,
         port: 9000
       },
+      devtool: false,
     plugins: [
-        new HtmlWebpackPlugin({template: './src/index.html'})
+        new HtmlWebpackPlugin({template: './src/index.html'}),
+        new webpack.SourceMapDevToolPlugin({})
+        
       ]
   };

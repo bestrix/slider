@@ -1,13 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
+const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');//неиспользуюмые плагины
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin"); 
+const smp = new SpeedMeasurePlugin();
 
-module.exports = {
+module.exports = smp.wrap({
     mode: 'development',
-    entry: './src/react.jsx',
+    entry: {
+      main: "./src/react.jsx",
+    },
     output: {
-      filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist2'),
+      filename: '[contentHash].bundle.js',
+      path: path.resolve(__dirname, 'dist'),
     },
     module: {
         rules: [
@@ -60,7 +65,9 @@ module.exports = {
       devtool: false,
     plugins: [
         new HtmlWebpackPlugin({template: './src/index.html'}),
-        new webpack.SourceMapDevToolPlugin({})
+        new webpack.SourceMapDevToolPlugin({}),
+        new UnusedFilesWebpackPlugin(),
+  
         
       ]
-  };
+  });

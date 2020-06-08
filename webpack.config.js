@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
-const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');//неиспользуюмые плагины
+const { UnusedFilesWebpackPlugin } = require('unused-files-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin"); 
 const smp = new SpeedMeasurePlugin();
+
+
 
 module.exports = smp.wrap({
     mode: 'development',

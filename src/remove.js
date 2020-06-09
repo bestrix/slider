@@ -1,10 +1,17 @@
-let slider = document.getElementById('slider')
+import {slider , slidesNumber} from "./react.jsx"
+
 function removeAll(){
-    console.log(slider)
-}
+   for (let i = 0; i < slidesNumber; i++){
+        slider.children[0].remove()
+   }
+};
 
 function removeFirst(){
-    alert()
+    slider.children[0].remove()
 }
 
-export {removeAll, removeFirst}
+function removeLast(){
+    slider.children[slidesNumber - 1].remove()
+}
+
+export {removeAll, removeFirst, removeLast}

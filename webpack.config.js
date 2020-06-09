@@ -68,8 +68,5 @@ module.exports = smp.wrap({
     plugins: [
         new HtmlWebpackPlugin({template: './src/index.html'}),
         new webpack.SourceMapDevToolPlugin({}),
-        new UnusedFilesWebpackPlugin(),
-  
-        
       ]
   });

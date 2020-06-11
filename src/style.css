@@ -48,3 +48,8 @@
     transition: margin-top 1s ease-out 0.5s;
 }
 
+.slide{
+    float: left;
+    width: 256px;
+    height: 256px;
+}

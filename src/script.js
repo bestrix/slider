@@ -43,8 +43,7 @@ function remove(param){
 
 //----------------------Add
 let massImg = [];
-
-let numberImg = 0 ;
+let numberImg = 0;
 let slideCounter = 0;
 
 //Расщет slideConuter
@@ -112,7 +111,7 @@ function appendImg(number){
     }
 }
 
-appendImg(numSlide)
+// appendImg(numSlide)
 sizeImg()
 
 //add slide + доделать
@@ -156,7 +155,7 @@ function moveLeft(){
     strip.children[0].style.marginLeft = '-256px'
 }
 
-remove('all')
+//remove('all')
 
 function allPlus(){
     changeColorBorder()
@@ -168,8 +167,6 @@ function allPlus(){
         console.log("remove");
         strip.lastElementChild.remove()
     },1000);
-    
-
 }
 
 function allMinus(){

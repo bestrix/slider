@@ -21,7 +21,6 @@ if(test){
     
     test.style.top = slider.getBoundingClientRect().bottom - test2.getBoundingClientRect().height + 'px'
     test.style.left = slider.getBoundingClientRect().left  + 'px'
-    console.log(slider)
 }
 
 if(test2){

@@ -22,18 +22,15 @@ export default function App(){
      <React.Fragment>
          <div id="slider">
              <div className="slide">
-               <h1>headers for slider</h1>
+               <h1 className='zaza'>headers for slider</h1>
              </div>
              <div className="slide">
-               <p>
+               <p className='zaza'>
                   lorem ipsum sit amet
                   lorem ipsum sit amet
                   lorem ipsum sit amet
                   lorem ipsum sit amet
                </p>
-             </div>
-             <div className="slide">
-               <img src='./img/1.png'/>
              </div>
              <div className="slide">
                <img src='./img/1.png'/>

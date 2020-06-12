@@ -3,3 +3,4 @@ export default function test(){
     document.write(any)
 }
 
+let asas = 2;
